@@ -1,0 +1,481 @@
+/* ═══════════════════════════════════════════════════════════
+   TAMIL HERITAGE ARCHIVE — Cinematic Design System
+   ═══════════════════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Serif+Tamil:wght@400;700&display=swap');
+
+/* ── Custom Properties ── */
+:root {
+  --th-bg-primary: #050508;
+  --th-bg-secondary: #0a0a0f;
+  --th-bg-tertiary: #0f0f18;
+  --th-gold-100: #fef3c7;
+  --th-gold-200: #fde68a;
+  --th-gold-300: #fcd34d;
+  --th-gold-400: #fbbf24;
+  --th-gold-500: #f59e0b;
+  --th-gold-600: #d97706;
+  --th-gold-700: #b45309;
+  --th-amber-glow: rgba(251, 191, 36, 0.15);
+  --th-cyan-400: #22d3ee;
+  --th-cyan-500: #06b6d4;
+  --th-cyan-glow: rgba(34, 211, 238, 0.12);
+  --th-green-500: #22c55e;
+  --th-purple-500: #a855f7;
+  --th-red-500: #ef4444;
+  --th-font-sans: 'Outfit', system-ui, sans-serif;
+  --th-font-display: 'Space Grotesk', sans-serif;
+  --th-font-mono: 'JetBrains Mono', monospace;
+  --th-font-tamil: 'Noto Serif Tamil', serif;
+  --th-ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --th-ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* ── Base ── */
+.th-root {
+  font-family: var(--th-font-sans);
+  background: var(--th-bg-primary);
+  color: #ffffff;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.th-root ::selection {
+  background: rgba(251, 191, 36, 0.2);
+  color: #fff;
+}
+
+/* ── Typography ── */
+.th-font-display { font-family: var(--th-font-display); }
+.th-font-mono { font-family: var(--th-font-mono); }
+.th-font-tamil { font-family: var(--th-font-tamil); }
+
+.th-text-gold {
+  background: linear-gradient(135deg, var(--th-gold-300), var(--th-gold-500), var(--th-gold-600));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.th-text-shimmer {
+  background: linear-gradient(90deg, var(--th-gold-300), var(--th-gold-500), var(--th-gold-600), var(--th-gold-300));
+  background-size: 300% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: th-shimmer 4s linear infinite;
+}
+
+.th-text-cyan {
+  background: linear-gradient(135deg, var(--th-cyan-400), var(--th-cyan-500));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Scrollbar ── */
+.th-root::-webkit-scrollbar { width: 5px; }
+.th-root::-webkit-scrollbar-track { background: var(--th-bg-primary); }
+.th-root::-webkit-scrollbar-thumb {
+  background: linear-gradient(var(--th-gold-400), var(--th-gold-600));
+  border-radius: 3px;
+}
+
+/* ── Keyframe Animations ── */
+@keyframes th-shimmer {
+  0% { background-position: -300% center; }
+  100% { background-position: 300% center; }
+}
+
+@keyframes th-float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-12px) rotate(1deg); }
+  75% { transform: translateY(8px) rotate(-1deg); }
+}
+
+@keyframes th-float-slow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes th-glow-pulse {
+  0%, 100% { opacity: 0.4; filter: blur(20px); }
+  50% { opacity: 0.7; filter: blur(30px); }
+}
+
+@keyframes th-dust-drift {
+  0% { transform: translate(0, 0) scale(1); opacity: 0; }
+  10% { opacity: 0.6; }
+  90% { opacity: 0.6; }
+  100% { transform: translate(80px, -120px) scale(0.5); opacity: 0; }
+}
+
+@keyframes th-fog-flow {
+  0% { transform: translateX(-30%) scaleY(1); }
+  50% { transform: translateX(0%) scaleY(1.1); }
+  100% { transform: translateX(30%) scaleY(1); }
+}
+
+@keyframes th-sacred-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes th-sacred-spin-reverse {
+  0% { transform: rotate(360deg); }
+  100% { transform: rotate(0deg); }
+}
+
+@keyframes th-text-glow {
+  0%, 100% { text-shadow: 0 0 10px rgba(251, 191, 36, 0.3); }
+  50% { text-shadow: 0 0 25px rgba(251, 191, 36, 0.6), 0 0 50px rgba(251, 191, 36, 0.2); }
+}
+
+@keyframes th-border-glow {
+  0%, 100% { border-color: rgba(251, 191, 36, 0.1); }
+  50% { border-color: rgba(251, 191, 36, 0.3); }
+}
+
+@keyframes th-pulse-ring {
+  0% { transform: scale(1); opacity: 0.5; }
+  100% { transform: scale(2); opacity: 0; }
+}
+
+@keyframes th-vault-open {
+  0% { clip-path: inset(0 50% 0 50%); }
+  100% { clip-path: inset(0 0 0 0); }
+}
+
+@keyframes th-hash-scroll {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-50%); }
+}
+
+@keyframes th-node-pulse {
+  0%, 100% { r: 4; opacity: 0.6; }
+  50% { r: 6; opacity: 1; }
+}
+
+@keyframes th-line-draw {
+  0% { stroke-dashoffset: 1000; }
+  100% { stroke-dashoffset: 0; }
+}
+
+@keyframes th-fade-in-up {
+  0% { opacity: 0; transform: translateY(30px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes th-scale-in {
+  0% { opacity: 0; transform: scale(0.8); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes th-char-appear {
+  0% { opacity: 0; transform: translateY(20px) scale(0.5); filter: blur(8px); }
+  100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+}
+
+@keyframes th-molecular-orbit {
+  0% { transform: rotate(0deg) translateX(40px) rotate(0deg); }
+  100% { transform: rotate(360deg) translateX(40px) rotate(-360deg); }
+}
+
+@keyframes th-ripple {
+  0% { transform: scale(0); opacity: 0.5; }
+  100% { transform: scale(4); opacity: 0; }
+}
+
+/* ── Animation Utilities ── */
+.th-animate-float { animation: th-float 6s ease-in-out infinite; }
+.th-animate-float-slow { animation: th-float-slow 8s ease-in-out infinite; }
+.th-animate-glow { animation: th-glow-pulse 4s ease-in-out infinite; }
+.th-animate-dust { animation: th-dust-drift 8s ease-in-out infinite; }
+.th-animate-fog { animation: th-fog-flow 15s ease-in-out infinite; }
+.th-animate-sacred { animation: th-sacred-spin 20s linear infinite; }
+.th-animate-sacred-rev { animation: th-sacred-spin-reverse 25s linear infinite; }
+.th-animate-text-glow { animation: th-text-glow 3s ease-in-out infinite; }
+.th-animate-border-glow { animation: th-border-glow 3s ease-in-out infinite; }
+.th-animate-hash { animation: th-hash-scroll 20s linear infinite; }
+
+/* ── GPU Acceleration ── */
+.th-gpu {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+.th-gpu-transform {
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+}
+
+/* ── Atmospheric Overlays ── */
+.th-vignette {
+  position: relative;
+}
+.th-vignette::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 50%, var(--th-bg-primary) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.th-fog-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(5, 5, 8, 0.3) 30%,
+    rgba(5, 5, 8, 0.6) 60%,
+    var(--th-bg-primary) 100%
+  );
+  pointer-events: none;
+}
+
+.th-fog-top {
+  position: absolute;
+  top: 0;
+  left: -30%;
+  right: -30%;
+  height: 200px;
+  background: radial-gradient(ellipse at center, rgba(251, 191, 36, 0.05), transparent 70%);
+  animation: th-fog-flow 15s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.th-dust-particle {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: var(--th-gold-400);
+  border-radius: 50%;
+  opacity: 0;
+  animation: th-dust-drift 8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* ── Card Styles ── */
+.th-glass-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 1.5rem;
+  backdrop-filter: blur(12px);
+  transition: border-color 0.4s ease, transform 0.4s var(--th-ease-out-expo), box-shadow 0.4s ease;
+}
+
+.th-glass-card:hover {
+  border-color: rgba(251, 191, 36, 0.2);
+  box-shadow: 0 0 40px rgba(251, 191, 36, 0.05);
+}
+
+.th-glow-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.th-glow-card::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: conic-gradient(from var(--glow-angle, 0deg), transparent 40%, var(--th-gold-400) 50%, transparent 60%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.th-glow-card:hover::before {
+  opacity: 1;
+}
+
+/* ── Chapter Sections ── */
+.th-chapter {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding: 4rem 1rem;
+  overflow: hidden;
+}
+
+.th-chapter-pinned {
+  position: relative;
+  height: 400vh;
+}
+
+.th-chapter-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+/* ── Vault Door Animation ── */
+.th-vault-door {
+  clip-path: inset(0 50% 0 50%);
+  transition: clip-path 0.8s var(--th-ease-out-expo);
+}
+
+.th-vault-door.th-open {
+  clip-path: inset(0 0 0 0);
+}
+
+/* ── Sacred Geometry ── */
+.th-sacred-circle {
+  position: absolute;
+  border: 1px solid rgba(251, 191, 36, 0.1);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* ── Blockchain Hash Display ── */
+.th-hash-stream {
+  font-family: var(--th-font-mono);
+  font-size: 10px;
+  line-height: 1.8;
+  color: rgba(34, 211, 238, 0.3);
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+/* ── Responsive: Mobile First ── */
+
+/* Small phones */
+.th-chapter {
+  padding: 3rem 1rem;
+}
+
+/* Tablets */
+@media (min-width: 768px) {
+  .th-chapter {
+    padding: 5rem 2rem;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  .th-chapter {
+    padding: 6rem 2rem;
+  }
+}
+
+/* Large desktop */
+@media (min-width: 1440px) {
+  .th-chapter {
+    padding: 8rem 2rem;
+  }
+}
+
+/* ── Reduced Motion ── */
+@media (prefers-reduced-motion: reduce) {
+  .th-animate-float,
+  .th-animate-float-slow,
+  .th-animate-glow,
+  .th-animate-dust,
+  .th-animate-fog,
+  .th-animate-sacred,
+  .th-animate-sacred-rev,
+  .th-animate-text-glow,
+  .th-animate-border-glow,
+  .th-animate-hash {
+    animation: none !important;
+  }
+
+  .th-gpu {
+    will-change: auto;
+  }
+}
+
+/* ── Canvas Container ── */
+.th-canvas-container {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.th-canvas-container canvas {
+  display: block;
+}
+
+/* ── Progress Bar ── */
+.th-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--th-gold-400), var(--th-gold-500), var(--th-gold-600));
+  z-index: 9999;
+  transform-origin: left;
+  will-change: transform;
+}
+
+/* ── Chapter Navigation ── */
+/* Desktop: right side vertical */
+@media (min-width: 1024px) {
+  nav[aria-label="Chapter navigation"] {
+    right: 24px !important;
+    top: 50% !important;
+    bottom: auto !important;
+    left: auto !important;
+    transform: translateY(-50%) !important;
+    flex-direction: column !important;
+  }
+}
+
+/* ── Utility: Image Cover ── */
+.th-img-cover {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+/* ── Tamil Character Styling ── */
+.th-tamil-char {
+  font-family: var(--th-font-tamil);
+  color: rgba(251, 191, 36, 0.15);
+  font-size: clamp(1.5rem, 4vw, 3rem);
+  position: absolute;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ── Molecular Visualization ── */
+.th-molecule-node {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--th-gold-400);
+  position: absolute;
+  box-shadow: 0 0 8px var(--th-gold-400);
+}
+
+.th-molecule-bond {
+  position: absolute;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(251, 191, 36, 0.4), rgba(251, 191, 36, 0.1));
+  transform-origin: left center;
+}
+
+/* ── Blueprint Grid ── */
+.th-blueprint-grid {
+  background-image:
+    linear-gradient(rgba(34, 211, 238, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(34, 211, 238, 0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* ── Tactical Grid ── */
+.th-tactical-grid {
+  background-image:
+    linear-gradient(rgba(239, 68, 68, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(239, 68, 68, 0.05) 1px, transparent 1px);
+  background-size: 30px 30px;
+}
